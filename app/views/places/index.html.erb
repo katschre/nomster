@@ -1,1 +1,13 @@
-<h1>Welcome to my Awesome Web App</h1>
+<!-- this would just show every single detail of the code -->
+<!-- we want to break this up to show what we want, how we want -->
+<!-- #<h1><%= @places.inspect %></h1> -->
+
+<% @places.each do |place| %>
+  <div>
+    <h1><%= place.name %></h1><br />
+    <i><%= place.address %></i><br />
+    <p><%= place.description %></p><br />
+  </div>
+
+  <hr />
+<% end %>
