@@ -19,13 +19,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Nomster</a>
+    <!-- This line of code is what is putting the navbar on our pages -->
+      <%= link_to 'Nomster', root_path, class: 'navbar-brand' %> <!-- added this line to use ruby-style of writing a link rather plain html style -->
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="#">Link</a></li>
+        <li>
+<!--           <%= link_to 'New Place', new_place_path %>
+          <i class="glyphicon glyphicon-plus-sign"></i> -->
+          <%= link_to new_place_path do %>
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            New Place
+          <% end %>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
