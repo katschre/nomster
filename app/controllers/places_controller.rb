@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @places = Place.all
@@ -12,7 +13,8 @@ class PlacesController < ApplicationController
 ##This is similar to how we previously hardcoded the following in the rails console before:
 ##Place.create(name: 'Place', address: '123 Fake Street', description: 'Awesome!')
   def create
-    Place.create(place_params)
+    current_user.places.create(place_params)
+    # Place.create(place_params)
     redirect_to root_path   ##after doing def create/def place_params we need to redirect user to the page with
                             ##with all the places listed aka the the "places controller and the index action"
                             ##to decide what code to write we use "rake routes" and find the route that
