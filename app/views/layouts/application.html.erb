@@ -43,6 +43,13 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<% if notice.present? %>          <!-- adding notice.present? makes alert only pop up when needed -->
+  <p class="alert alert-info"><%= notice %></p>   <!-- flash alerts -->
+<% end %>
+<% if alert.present? %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
 <%= yield %>
 
 </body>
