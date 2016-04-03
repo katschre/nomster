@@ -37,6 +37,12 @@ class PlacesController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    @place = Place.find(params[:id])
+    @place.destroy
+    redirect_to root_path
+  end
+
   private
 ##The place_params part is what pulls the values of name, description and address from the place form.
 ##Then the Place.create is what actually sends the item to the database.
