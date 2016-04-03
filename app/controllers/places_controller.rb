@@ -13,14 +13,13 @@ class PlacesController < ApplicationController
 ##This is similar to how we previously hardcoded the following in the rails console before:
 ##Place.create(name: 'Place', address: '123 Fake Street', description: 'Awesome!')
   def create
-    current_user.places.create(place_params)
-    # Place.create(place_params)
-    redirect_to root_path   ##after doing def create/def place_params we need to redirect user to the page with
-                            ##with all the places listed aka the the "places controller and the index action"
-                            ##to decide what code to write we use "rake routes" and find the route that
-                            ##corresponds to the page we need (controller called places, and action called index)
-                            ##According to the table that shows up when we type "rake routes"...
-                            ##the prefix is 'root' so we do 'root_path'
+    @place = current_user.places.create(place_params)
+    #Check if validations are passed and the record actually got saved to our database
+    if @place.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -42,7 +41,11 @@ class PlacesController < ApplicationController
     end
 
     @place.update_attributes(place_params)
-    redirect_to root_path
+    if @place.valid?
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
