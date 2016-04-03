@@ -93,15 +93,45 @@ function initMap() {
 <% end %>
 
 <div class="clear"></div>
-<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-  <%= f.input :caption %>
-  <%= f.input :avatar %>
-  <%= f.submit "Add a photo", class: 'btn btn-primary' %>
-<% end %>
+
+
+
+
+<!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPhotoModal">
+  Add a photo
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
+      </div>
+        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+          <div class="modal-body">
+            <%= f.input :caption %>
+            <%= f.input :avatar %>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Add a photo", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
+
 
 <h1>Photos</h1>
 
 <% @place.photos.each do |photo| %>
-  <%= image_tag photo.avatar %>
-  <%= photo.caption %>
+  <div>
+      <%= image_tag photo.avatar %>
+      <small><%= photo.caption %></small>
+  </div>
 <% end %>
+
