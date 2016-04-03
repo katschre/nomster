@@ -31,7 +31,7 @@
 
   <% if place.photos.present? %>
     <div class="col-xs-12 col-sm-6">
-        <%= place.photos.last.avatar %>
+        <%= image_tag place.photos.last.avatar %>
         <small><%= place.photos.last.caption %></small>
     </div>
   <% end %>
