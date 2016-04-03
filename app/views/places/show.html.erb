@@ -92,15 +92,7 @@ function initMap() {
   </div>
 <% end %>
 
-<div class="clear"></div>
-
-
-
-
-<!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPhotoModal">
-  Add a photo
-</button>
+<br></br>
 
 <!-- Modal -->
 <div class="modal fade" id="myPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -125,11 +117,19 @@ function initMap() {
   </div>
 </div>
 
+<div class="col-xs-10 col-xs-offset-1">
+  <h1 class="pull-left">Photos</h1>
 
-<h1>Photos</h1>
+  <!-- Button trigger modal -->
+  <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myPhotoModal">
+    Add a photo
+  </button>
+</div>
+<div class="clear"></div>
+
 
 <% @place.photos.each do |photo| %>
-  <div>
+  <div class="col-xs-12 col-sm-6">
       <%= image_tag photo.avatar %>
       <small><%= photo.caption %></small>
   </div>
