@@ -23,6 +23,10 @@ class PlacesController < ApplicationController
                             ##the prefix is 'root' so we do 'root_path'
   end
 
+  def show
+    @place = Place.find(params[:id])
+  end
+
   private
 ##The place_params part is what pulls the values of name, description and address from the place form.
 ##Then the Place.create is what actually sends the item to the database.
