@@ -31,6 +31,12 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
   end
 
+  def update
+    @place = Place.find(params[:id])
+    @place.update_attributes(place_params)
+    redirect_to root_path
+  end
+
   private
 ##The place_params part is what pulls the values of name, description and address from the place form.
 ##Then the Place.create is what actually sends the item to the database.
